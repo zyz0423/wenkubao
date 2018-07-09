@@ -1,4 +1,4 @@
-package com.wenkubao.wenkubao;
+package com.wenkubao;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
