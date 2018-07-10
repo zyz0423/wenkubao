@@ -9,6 +9,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +24,8 @@ import java.util.Date;
 public class DownloadController {
 
     private CloseableHttpClient httpClient = HttpClients.createDefault();
+
+    private Logger LOGGER = LoggerFactory.getLogger(DownloadController.class);
 
     @Autowired
     private UserrecordService userrecordService;
@@ -66,6 +70,7 @@ public class DownloadController {
                 return "请确保您的连接是百度文库的连接。";
             }
         } catch (Exception e) {
+            LOGGER.error("下载出错",e);
             return "http://39.108.149.27:9999/default.aspx";
         }
     }
