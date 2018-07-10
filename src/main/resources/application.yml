@@ -1,9 +1,10 @@
 spring:
     datasource:
         name: wenkubao
-        url: jdbc:mysql://127.0.0.1:3306/wenkubao?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+        #url: jdbc:mysql://127.0.0.1:3306/wenkubao?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+        url: jdbc:mysql://39.107.115.56:3306/wenkubao?useUnicode=true&characterEncoding=utf8&autoReconnect=true
         username: root
-        password: admin
+        password: FDwlq1234
 
 mybatis:
           mapperLocations: classpath:mapper/*.xml
