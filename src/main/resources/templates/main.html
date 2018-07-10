@@ -255,43 +255,6 @@
 		</div>
 	</div>
     <script type="text/javascript">
-        /*记住用户名和密码*/
-
-        //如果$.cookie("rememberUser")为true,即把cookie里存的userName，passWord的值赋给id是username,userpwd的input；
-
-        function saveUserInfo() {
-            if ($("#rememberUser").prop("checked") == true) {
-                var userName = $("#account").val();
-                var passWord = $("#pwd").val();
-                $.cookie("rememberUser", "true", {
-                    expires: 365
-                }); // 存储一个带365天期限的 cookie
-                $.cookie("userName", userName, {
-                    expires: 365
-                }); // 存储一个带365天期限的 cookie
-                $.cookie("passWord", passWord, {
-                    expires: 365
-                }); // 存储一个带365天期限的 cookie
-            } else {
-                $.cookie("rememberUser", "false", {
-                    expires: -1
-                }); // 删除 cookie
-                $.cookie("userName", '', {
-                    expires: -1
-                });
-                $.cookie("passWord", '', {
-                    expires: -1
-                });
-            }
-        }
-
-        function setInfo() {
-            $("#account2").val($("#account").val());
-            $("#pwd2").val($("#pwd").val());
-            
-        }
-
-        
 
         function ResetSys() {
             //clearInterval(time);
@@ -332,13 +295,11 @@
             else {
                 alert("请先输入账号密码");
             }
-            //$("#compliable").attr('display', 'block');
 
         }
         function showMainSys() {
             $("#commonSys").css('display', 'block');
             $("#compliable").css('display', 'none');
-            //$("#compliable").attr('display', 'block');
 
         }
         //如果$("#rememberUser").prop("checked") == true，把id为username，userpwd的值赋给cookie里的userName，passWord，并设置有效期是365天
@@ -619,8 +580,8 @@
     ._postman_rawmode_tip {  
         position: absolute;  
         z-index: 2147483647;
-        outline: none;  
-        padding: 5px;  
+        outline: none;
+        padding: 5px;
         border-width: 1px;  
         border-style: solid;  
         border-radius: 5px;  

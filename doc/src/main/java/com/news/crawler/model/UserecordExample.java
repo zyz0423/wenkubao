@@ -465,6 +465,76 @@ public class UserecordExample {
             return (Criteria) this;
         }
 
+        public Criteria andStrDateIsNull() {
+            addCriterion("str_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateIsNotNull() {
+            addCriterion("str_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateEqualTo(String value) {
+            addCriterion("str_date =", value, "strDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateNotEqualTo(String value) {
+            addCriterion("str_date <>", value, "strDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateGreaterThan(String value) {
+            addCriterion("str_date >", value, "strDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateGreaterThanOrEqualTo(String value) {
+            addCriterion("str_date >=", value, "strDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateLessThan(String value) {
+            addCriterion("str_date <", value, "strDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateLessThanOrEqualTo(String value) {
+            addCriterion("str_date <=", value, "strDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateLike(String value) {
+            addCriterion("str_date like", value, "strDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateNotLike(String value) {
+            addCriterion("str_date not like", value, "strDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateIn(List<String> values) {
+            addCriterion("str_date in", values, "strDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateNotIn(List<String> values) {
+            addCriterion("str_date not in", values, "strDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateBetween(String value1, String value2) {
+            addCriterion("str_date between", value1, value2, "strDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStrDateNotBetween(String value1, String value2) {
+            addCriterion("str_date not between", value1, value2, "strDate");
+            return (Criteria) this;
+        }
+
         public Criteria andGmtDateIsNull() {
             addCriterion("gmt_date is null");
             return (Criteria) this;

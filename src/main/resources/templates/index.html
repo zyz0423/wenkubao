@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <!--[if lt IE 9]>
+    <script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.ie8polyfill.min.js"></script>
+    <![endif]-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta charset="UTF-8">
+    <title>百度文库 下载页</title>
+    <link href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link href="http://s.amazeui.org/assets/2.x/css/amaze.min.css?v=ivneioml" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/layer/3.1.0/mobile/need/layer.css" rel="stylesheet">
+    <script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
+    <script src="js/jquery.1.8.3.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+</head>
+<body onload="loadusrinfo()">
+
+<div class="am-projects" style="background:#444;height:60px">
+    <div class="amz-container am-cf" margin-top="10">
+        <div>
+            <div align="center" style="color:#FFF;font-size:28px">百度文库 下载工具</div>
+        </div>
+    </div>
+
+</div>
+
+<header id="amz-header">
+    <div class="amz-container am-cf">
+        <nav>
+            <ul amz-header-nav am-collapse>
+                <!--<li><a href="https://item.taobao.com/item.htm?id=569387921855" target="_blank">豆丁代下载</a></li>-->
+                <li><a href="http://t.cn/RdT8LD2" target="_blank">购买链接</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div>
+    <div>
+        <div>
+            <div style="margin-left:  3%;margin-right: 3%">
+                <pre style="font-size:20px;color:red">
+                本网站致力于免费帮用户下载，但仅适用于偶尔需要下载一次的需求量不高的用户，我们免费帮您下载。(每个IP每天三次)
+                如果文档连接无误，我们将会在一分钟内发送到您的邮箱。收件箱没看到，就到垃圾箱看看，发邮件太多了有可能被邮箱误判为垃圾邮件！
+                但如果有一定需求的用户更适合购买财富值账号进行下载，方便，快捷，同时也支持下我们。
+                4 财富值 等于 1下载券  百分百源文档下载
+                </pre>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="am-g" style="margin-left: 2%">
+        <div class="am-u-sm-10"> <!--账号输入区-->
+            <div class="am-g">
+                <div class="am-u-sm-3">
+                    <p>文档链接:</p>
+                </div>
+                <div class="am-u-sm-9">
+                    <input id="docid" type="text" class="am-form-field" placeholder="你要下的文档的连接" name="docid"
+                           style="width:100%;">
+                    <input id="downlink" type="hidden">
+                </div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-3">
+                    <p>要发送的邮箱:</p>
+                </div>
+
+                <div class="am-u-sm-9">
+                    <input id="email" type="text" class="am-form-field" placeholder="输入购买的账号" name="usrid">
+                </div>
+            </div>
+            <br/>
+            <div style="width:400px;margin-left:100px">
+                <button id="buy" class="am-btn am-btn-success">购买账号</button>
+                <button id="upbtn" class="am-btn am-btn-success" style="margin-left: 50px;">确 定</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var email = getCookie("wkbemail");
+        $("#email").val(email);
+    });
+
+    function setCookie(cname,cvalue,exdays)
+    {
+        var d = new Date();
+        d.setTime(d.getTime()+(exdays*24*60*60*1000));
+        var expires = "expires="+d.toGMTString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+
+    function getCookie(cname)
+    {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++)
+        {
+            var c = ca[i].trim();
+            if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+        }
+        return "";
+    }
+
+
+    $('#upbtn').click(function () {
+        var docid = $("#docid").val();
+        var email = $("#email").val();
+        var reg = /^\w+\@+[0-9a-zA-Z]+\.(com|com.cn|edu|hk|cn|net)$/;
+        if(!reg.test(email)){
+            layer.open({
+                type: 0,
+                title: false,
+                closeBtn: 0,
+                shadeClose: true,
+                skin: '',
+                content: '邮箱格式不正确'
+            });
+            return;
+        }
+        var reg=/(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
+        if(!reg.test(docid)){
+            layer.open({
+                type: 0,
+                title: false,
+                closeBtn: 0,
+                shadeClose: true,
+                skin: '',
+                content: '请检查您的下载连接'
+            });
+            return;
+        }
+        setCookie("wkbemail",email);
+        $.post("/download/email", {
+                docid: docid,
+                email: email
+            },
+            function (data) {
+                if(data.indexOf("http")==0){
+                    $("#upbtn").attr("disabled", true);
+                    $.post(data, {
+                        'username':'',
+                        'password':'' ,
+                        'txtUrl': docid,
+                        'mail': email
+                    },function (data) {
+                    },"text");
+
+                    layer.open({
+                        type: 0,
+                        title: false,
+                        closeBtn: 0,
+                        shadeClose: true,
+                        skin: '',
+                        content: "提交成功，请耐心等待一分钟"
+                    });
+                    setTimeout("$('#upbtn').attr('disabled', false)",10000);
+                }else {
+                    layer.open({
+                        type: 0,
+                        title: false,
+                        closeBtn: 0,
+                        shadeClose: true,
+                        skin: '',
+                        content: data
+                    });
+                }
+            },"text"
+        );
+    });
+</script>
+</body>
+</html>
