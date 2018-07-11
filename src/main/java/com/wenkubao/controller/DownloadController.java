@@ -43,7 +43,8 @@ public class DownloadController {
             return "请确保您提交的是百度文库的连接";
         }
 
-        String ip = getIPAddress(request);
+        //String ip = getIPAddress(request);
+        String ip = request.getRemoteAddr();
         int count = userrecordService.getUseCount(ip, DateUtil.getFormatDate("yyyy-MM-dd"));
         if(count >= 3){
             return "抱歉，每天只提供三次免费下载,如有需要可点击上方购买链接";
